@@ -1,0 +1,48 @@
+<div class="item">
+  <img class="item__image" 
+    src={{if @card.preview-image @card.preview-image 'assets/images/no-photo.png'}} 
+    alt={{@card.title}} 
+  />
+  <div class="item__thumb">
+    <div class="item__title__thumb">
+      <svg width='16' height='16'>
+        <use class={{@card.type}} href='/assets/icons/sprite.svg#icon-{{@card.type}}'></use>
+      </svg>
+      <p class="item__title">{{@card.title}}</p>
+    </div>
+      {{#if @card.tags}}
+      <div class="item__tags__thumb">
+        <a href="#" class="tag-link">
+          <span class="tag-item">Tags:</span>
+          <span class="tag-item__sum">+{{@card.tags.length}}</span>
+          <ul class="tag-list">
+            {{#each @card.tags as |tags|}}
+            <li class="tag-item">{{tags}}</li>
+            {{/each}}
+          </ul>
+        </a>
+
+      </div>
+      {{/if}}
+    
+      {{#if @card.description}}
+      <p class="item__description">{{@card.description}}</p>
+      {{/if}}
+
+      {{#if @card.external-link}}
+        <div class="item__link-thumb">
+          <div class="icon-thumb">
+            <svg width='16' height='16'>
+              <use class={{@card.type}} href='/assets/icons/sprite.svg#icon-{{@card.type}}'></use>
+            </svg>
+          </div>
+          <div>
+            <p class="item__link-title">{{@card.external-link.title}}</p>
+            <a class="item__link" href={{@card.external-link.href}} target="_blank" rel="noreferrer noopener">
+              {{@card.external-link.href}}
+            </a>
+          </div>
+        </div>
+      {{/if}}
+  </div>
+</div>
