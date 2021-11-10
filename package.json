@@ -21,11 +21,9 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-     "deploy": "ember build --environment production && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages"
-  }
-
+    "pre-deploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
-  "homepage": "https://ihor-nechyporenko.github.io/ember-test",
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.2",
